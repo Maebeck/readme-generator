@@ -45,7 +45,7 @@ function userQuestions () {
         },
         {
             type: "input",
-            message: "What is your GitHub URL?",
+            message: "What is your GitHub name?",
             name: "GitHub"
         }
         {
@@ -79,9 +79,22 @@ function genREADME(response){
         ${response.usage}
     ## Test Installation
         ${response.testinstructions}
-    ## GitHub URL 
-        ${response.GitHub}
-    ## Contatct Email - Questions
-        ${response.email}
-    `
+    ## GitHub URL
+        For any questions about this project, you can click on my GitHub
+        link below:
+        - [GitHub Profile](https://github.com/${response.GitHub})
+    ## License:
+        For more information regarding the licensing used, click on the link below:
+        - [License](https://opensource.org/licenses/${response.license})   
+    ## Additional Contact Information
+        If you have any further questions, you can contact me directly at: ${response.email}.
+`;
+}
+
+async function init() {
+    try {
+        const response = await promptUser();
+
+        const readMe = genREADME(response);
+    }
 }
