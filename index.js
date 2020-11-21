@@ -39,9 +39,9 @@ function userQuestions () {
             choices: [
                 "Apache",
                 "MIT",
-                "BSD 3",
+                "GPl",
                 "BSD 2"],
-            name: "License"
+            name: "license"
         },
         {
             type: "input",
@@ -55,44 +55,44 @@ function userQuestions () {
         }
     ]);
 }
-// Function that generates the README with the user inputs
+// Function that generates the README using the user inputs
 function genREADME(response){
     return  `
-    # ${response.title}
+# ${response.title}
 
-    # Table of Contents
+# Table of Contents
 
-    - [Description](#description)
-    - [Installation](#installation)
-    - [Usage](#usage)
-    - [Test Instructions](#testinstructions)
-    - [License](#License)
-    - [GitHub URL](#GitHub)
-    - [Contact Email](#email)
+- [Description](#description)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Test Instructions](#testinstructions)
+- [License](#license)
+- [GitHub URl](#GitHub)
+- [Contact Email](#email)
     
-    ## Description
-    [![License](https://img.shields.io/badge/License-${response.License}-blue.svg "License Badge")]
+## Description
+[![License](https://img.shields.io/badge/license-${response.license}-blue.svg "License Badge")]
 
-        ${response.description}
-    ## Installation
-        ${response.installation}
-    ## Usage
-        ${response.usage}
-    ## Test Installation
-        ${response.testinstructions}
-    ## GitHub URL
-        For any questions about this project, you can click on my GitHub
-        link below:
-        - [GitHub Profile](https://github.com/${response.GitHub})
-    ## License:
+    ${response.description}
+## Installation
+    ${response.installation}
+ ## Usage
+    ${response.usage}
+## Test Installation
+    ${response.testinstructions}
+## GitHub URl
+    For any questions about this project, you can click on my GitHub
+    link below:
+- [GitHub Profile](https://github.com/${response.GitHub})
+## License:
         For more information regarding the licensing used, click on the link below:
-        - [![License](https://opensource.org/licenses/${response.License})]   
-    ## Additional Contact Information
-        If you have any further questions, you can contact me directly at: ${response.email}.
+- [![license](https://opensource.org/licenses/${response.license})]   
+## Additional Contact Information
+    If you have any further questions, you can contact me directly at: ${response.email}.
 `;
 }
 
-// Function that initializes the program based on if all the inputers were entered.
+// Function that initializes the program
 async function init() {
     try {
         const response = await userQuestions();
