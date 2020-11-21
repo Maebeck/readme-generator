@@ -71,7 +71,7 @@ function genREADME(response){
 - [Contact Email](#email)
     
 ## Description
-[![License](https://img.shields.io/badge/license-${response.license}-blue.svg "License Badge")]
+![](https://img.shields.io/badge/license-${response.license}-blue)
 
     ${response.description}
 ## Installation
@@ -86,7 +86,7 @@ function genREADME(response){
 - [GitHub Profile](https://github.com/${response.GitHub})
 ## License:
         For more information regarding the licensing used, click on the link below:
-- [![license](https://opensource.org/licenses/${response.license})]   
+-[${response.license}](https://opensource.org/licenses/${response.license})  
 ## Additional Contact Information
     If you have any further questions, you can contact me directly at: ${response.email}.
 `;
