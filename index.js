@@ -11,12 +11,12 @@ function userQuestions () {
         {
             type: "input",
             message: "What is the name of your Project?",
-            name: "Title"
+            name: "title"
         },
         {
             type: "input",
             message: "Describe what your project does briefly:",
-            name: "Description"
+            name: "description"
         },
         {
             type: "input",
@@ -37,17 +37,17 @@ function userQuestions () {
             type: "checkbox",
             message: "Please select a license.",
             choices: [
-                "Apache",
-                "MIT",
-                "ISC",
-                "GNU GPLv3"],
+                "Apache 2.0",
+                "BOOST 1.0",
+                "BSD 3",
+                "BSD 2"],
             name: "License"
         },
         {
             type: "input",
             message: "What is your GitHub name?",
             name: "GitHub"
-        }
+        },
         {
             type: "input",
             message: "What is your email address?",
@@ -55,6 +55,7 @@ function userQuestions () {
         }
     ]);
 }
+// Function that generates the README with the user inputs
 function genREADME(response){
     return  `
     # ${response.title}
@@ -69,8 +70,8 @@ function genREADME(response){
     - [GitHub URL](#GitHub)
     - [Contact Email](#email)
     
-    ## Description:
-    ![License](https://img.shields.io/badge/License-${response.license}-blue.svg "License Badge")
+    ## Description
+    [![License](https://img.shields.io/badge/License-${response.license}-blue.svg "License Badge")]
 
         ${response.description}
     ## Installation
@@ -85,16 +86,26 @@ function genREADME(response){
         - [GitHub Profile](https://github.com/${response.GitHub})
     ## License:
         For more information regarding the licensing used, click on the link below:
-        - [License](https://opensource.org/licenses/${response.license})   
+        - [![License](https://opensource.org/licenses/${response.license})]   
     ## Additional Contact Information
         If you have any further questions, you can contact me directly at: ${response.email}.
 `;
 }
 
+// Function that initializes the program based on if all the inputers were entered.
 async function init() {
     try {
-        const response = await promptUser();
+        const response = await userQuestions();
 
         const readMe = genREADME(response);
+
+        await writeFileAsync("README.md", readMe);
+        console.log("Success!");
+    }catch (err){
+        console.log(err);
     }
-}
+    }
+
+
+
+init ();
