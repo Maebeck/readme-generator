@@ -37,8 +37,8 @@ function userQuestions () {
             type: "checkbox",
             message: "Please select a license.",
             choices: [
-                "Apache 2.0",
-                "BOOST 1.0",
+                "Apache",
+                "MIT",
                 "BSD 3",
                 "BSD 2"],
             name: "License"
@@ -71,7 +71,7 @@ function genREADME(response){
     - [Contact Email](#email)
     
     ## Description
-    [![License](https://img.shields.io/badge/License-${response.license}-blue.svg "License Badge")]
+    [![License](https://img.shields.io/badge/License-${response.License}-blue.svg "License Badge")]
 
         ${response.description}
     ## Installation
@@ -86,7 +86,7 @@ function genREADME(response){
         - [GitHub Profile](https://github.com/${response.GitHub})
     ## License:
         For more information regarding the licensing used, click on the link below:
-        - [![License](https://opensource.org/licenses/${response.license})]   
+        - [![License](https://opensource.org/licenses/${response.License})]   
     ## Additional Contact Information
         If you have any further questions, you can contact me directly at: ${response.email}.
 `;
